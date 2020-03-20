@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 type RingMap struct {
 	size     int
 	values   [][2]string
@@ -30,7 +28,6 @@ func (rm *RingMap) Len() int {
 }
 
 func (rm *RingMap) Keys() []string {
-	fmt.Println("len(rm.values)", len(rm.values))
 	res := make([]string, len(rm.values))
 	for i := 0; i < len(rm.values); i++ {
 		if rm.values[i][0] != "" {
