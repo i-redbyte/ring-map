@@ -1,25 +1,24 @@
 package main
 
 type RingMap struct {
-	size       int
-	key, value []string
-	position   int
+	size     int
+	values   [][2]string
+	position int
 }
 
 func New(size int) *RingMap {
 	rm := new(RingMap)
 	rm.size = 0
-	rm.key = make([]string, size)
-	rm.value = make([]string, size)
+	rm.values = make([][2]string, size)
 	rm.position = 0
 	return rm
 }
 
 func (rm *RingMap) Put(key, value string) {
-	rm.key[rm.position] = key
-	rm.value[rm.position] = value
-	rm.position = (rm.position + 1) % len(rm.key)
-	if rm.size < cap(rm.key) {
+	rm.values[rm.position][0] = key
+	rm.values[rm.position][1] = value
+	rm.position = (rm.position + 1) % len(rm.values)
+	if rm.size < cap(rm.values) {
 		rm.size++
 	}
 }
@@ -29,13 +28,19 @@ func (rm *RingMap) Len() int {
 }
 
 func (rm *RingMap) Keys() []string {
-	return rm.key
+	var res []string
+	for i := 0; i < len(rm.values); i++ {
+		if rm.values[i][0] != "" {
+			res = append(res, rm.values[i][0])
+		}
+	}
+	return res
 }
 
 func (rm *RingMap) Get(key string) string {
 	for i := 0; i < rm.size; i++ {
-		if rm.key[i] == key {
-			return rm.value[i]
+		if rm.values[i][0] == key {
+			return rm.values[i][1]
 		}
 	}
 	return ""
