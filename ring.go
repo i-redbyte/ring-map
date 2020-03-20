@@ -28,7 +28,7 @@ func (rm *RingMap) Len() int {
 }
 
 func (rm *RingMap) Keys() []string {
-	res := make([]string, len(rm.values))
+	var res []string
 	for i := 0; i < len(rm.values); i++ {
 		if rm.values[i][0] != "" {
 			res = append(res, rm.values[i][0])
