@@ -11,8 +11,9 @@ func main() {
 	fmt.Println(v.Len())
 	v.Put("key3", "value3")
 	fmt.Println(v.Len())
+	fmt.Println("Keys:", v.Keys())
 	v.Put("key4", "value4")
 	fmt.Println(v.Len())
-	fmt.Println("GET:", v.Get("key4"))
 	fmt.Println("Keys:", v.Keys())
+	fmt.Println("GET:", v.Get("key4"))
 }
