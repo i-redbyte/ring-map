@@ -28,10 +28,10 @@ func main() {
 
 	fmt.Println(v.Get("key1")) // value1
 
-	v.Put("key4", "value4") // Add "key3": "value3" and remove "key2" as least recently used one
+	v.Put("key4", "value4") // Add "key3": "value3" and remove "key1" as least recently used one
 	fmt.Println(v.Len())    // 3
 
-	fmt.Println(v.Keys()) // [key1 key4 key3] // keys order doesn't matter here
+	fmt.Println(v.Keys()) // [key4 key2 key3] // keys order doesn't matter here
 }
 
 ```
