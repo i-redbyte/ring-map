@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	fmt.Printf("======> Start:")
+	fmt.Println("======> Start:")
 
 	v, err := NewVault(3)
 	if err != nil {
@@ -22,5 +22,7 @@ func main() {
 	v.Put("key4", "value4!")
 	fmt.Println(v.Len())
 	fmt.Println(v.Keys())
-	fmt.Printf("======> End.")
+	v.Clear()
+	fmt.Println(v.Len())
+	fmt.Println("======> End.")
 }
